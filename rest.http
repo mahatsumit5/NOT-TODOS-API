@@ -1,0 +1,28 @@
+###testing server status
+GET http://localhost:8000/
+
+###get all the task from the database
+GET http://localhost:8000/api/v1/task
+
+
+###send task to the database
+POST http://localhost:8000/api/v1/task
+Content-Type: application/json
+
+{
+"task":"tv",
+"hr":"10",
+"type":"entry",
+"id":"2"
+
+}
+###send task to the database
+PUT http://localhost:8000/api/v1/task
+
+###send task to the database
+DELETE  http://localhost:8000/api/v1/task
+Content-Type: application/json
+
+{
+    "id":"2"
+}
