@@ -1,24 +1,20 @@
 import express from "express";
-const app = express();
-const PORT = 8000;
 import taskRouter from "./src/taskRouter/taskRouter.js";
-//
+const app = express(); //CREATING EXPRESS APP
+const PORT = 8000;
+//CREATING A PORT NUMBER
 
+// Middleware
 app.use(express.json());
-// api endpoints
+// api endpoint
 app.use("/api/v1/task", taskRouter);
-
-// routers
+//OPEN PORT FOT HTTP REQUEST TO ACCESS THE SERVER
 app.get("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "server running as normal",
-  });
+  res.json({ message: "server is running healthy" });
 });
 
-// create a server
-
-app.listen(PORT, (error) => {
-  error && console.log(error.message);
-  console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(PORT, (err) => {
+  err
+    ? console.log(err.message)
+    : console.log(`Server is running at http://localhost:${PORT}`);
 });

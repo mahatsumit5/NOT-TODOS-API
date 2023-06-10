@@ -17,12 +17,18 @@ Content-Type: application/json
 
 }
 ###send task to the database
-PUT http://localhost:8000/api/v1/task
+PATCH  http://localhost:8000/api/v1/task
+ Content-Type: application/json
+
+ {
+"type":"bad",
+"id":"3"
+ }
 
 ###send task to the database
 DELETE  http://localhost:8000/api/v1/task
 Content-Type: application/json
 
 {
-    "id":"2"
+    "id":"2"   
 }
