@@ -10,11 +10,9 @@ POST http://localhost:8000/api/v1/task
 Content-Type: application/json
 
 {
-"task":"tv",
-"hr":"10",
-"type":"entry",
-"id":"2"
-
+"task":"playing games",
+"hr":"5",
+"type":"entry"
 }
 ###send task to the database
 PATCH  http://localhost:8000/api/v1/task
@@ -22,13 +20,8 @@ PATCH  http://localhost:8000/api/v1/task
 
  {
 "type":"bad",
-"id":"3"
+"_id":"64850f070dd4b973eaf656df"
  }
 
 ###send task to the database
-DELETE  http://localhost:8000/api/v1/task
-Content-Type: application/json
-
-{
-    "id":"2"   
-}
+DELETE  http://localhost:8000/api/v1/task/64850eeb0dd4b973eaf656dc
