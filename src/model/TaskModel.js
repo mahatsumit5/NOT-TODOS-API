@@ -1,23 +1,32 @@
-// model creates a table
+// model does the queries
+
 import TaskSchema from "./TaskSchema.js";
 
-// create data in db
+// Create data in db
 export const createTask = (taskObj) => {
   return TaskSchema(taskObj).save();
 };
 
-// read data from the db
 export const readTasks = () => {
   return TaskSchema.find();
 };
 
-// switch task
-// id as an string
+//_id as an string
 export const switchTask = (_id, type) => {
   return TaskSchema.findByIdAndUpdate(_id, { type });
 };
 
-// delete task by id
+// delete one task
 export const deleteTaskById = (_id) => {
   return TaskSchema.findByIdAndDelete(_id);
+};
+
+// delete many task
+//@ids shuld be an array
+export const deleteManyTasks = (ids) => {
+  return TaskSchema.deleteMany({
+    _id: {
+      $in: ids,
+    },
+  });
 };

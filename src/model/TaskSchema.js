@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-//Schema creates a Table
-const { Schema } = mongoose;
-// Schema is the method of methods
+// schema create the table
+const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   task: {
     type: String,
@@ -13,12 +12,11 @@ const taskSchema = new Schema({
   },
   type: {
     type: String,
-    required: true,
     default: "entry",
   },
 });
 
-// creating tables
-export default mongoose.model("Task", taskSchema); //create a table name With tasks(Task=> tasks)
+// creating table
+export default mongoose.model("Task", taskSchema); /// will create a table name tasks
 
-//queries
+///queries
