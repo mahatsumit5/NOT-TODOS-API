@@ -79,7 +79,7 @@ const dbLink =
     : process.env.MONGO_CLIENT;
 
 mongoose
-  .connect(dbLink)
+  .connect(process.env.MONGO_CLIENT)
   .then(() => {
     console.log("mongo conneted");
     app.listen(PORT, (err) => {
