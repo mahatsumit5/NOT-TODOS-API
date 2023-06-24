@@ -74,14 +74,14 @@ console.log(__dirname);
 ////////
 
 const dbLink =
-  process.env.NODE_ENV !== "production"
-    ? "mongodb://127.0.0.1:27017/nottododb"
-    : process.env.MONGO_CLIENT;
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGO_CLIENT
+    : "mongodb://127.0.0.1:27017/nottododb";
 
 mongoose
   .connect(dbLink)
   .then(() => {
-    console.log("mongo conneted");
+    console.log("mongo connected");
     app.listen(PORT, (err) => {
       err
         ? console.log(err.message)
