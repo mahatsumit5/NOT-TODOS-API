@@ -3,6 +3,8 @@ const app = express();
 import cors from "cors";
 const PORT = 8000;
 import path from "path";
+import dotenv from "dotenv";
+dotenv.config();
 
 // connect mongodb
 import { mongoConnect } from "./src/config/mongoDb.js";
