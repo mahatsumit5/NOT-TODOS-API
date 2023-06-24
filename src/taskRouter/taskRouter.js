@@ -8,7 +8,7 @@ import {
   deleteManyTasks,
 } from "../model/TaskModel.js";
 const router = express.Router();
-const _dirname = path.resolve();
+// const _dirname = path.resolve();
 
 router.get("/", async (req, res) => {
   //get data from the db
