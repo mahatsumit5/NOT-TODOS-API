@@ -73,10 +73,7 @@ app.use("/", (req, res) => {
 
 ////////
 
-const dbLink =
-  process.env.NODE_ENV === "production"
-    ? process.env.MONGO_CLIENT
-    : "mongodb://127.0.0.1:27017/nottododb";
+const dbLink = process.env.MONGO_CLIENT;
 
 mongoose
   .connect(dbLink)
