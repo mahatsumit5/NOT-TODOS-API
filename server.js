@@ -67,9 +67,9 @@ import mongoose from "mongoose";
 app.use("/api/v1/task", taskRouter);
 
 app.use("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/build/index.html");
 });
-console.log(__dirname);
+// console.log(__dirname);
 
 ////////
 
