@@ -1,18 +1,21 @@
 import express from "express";
-import path from "path";
 import {
-  createTask,
   deleteTaskById,
-  readTasks,
   switchTask,
   deleteManyTasks,
 } from "../model/TaskModel.js";
+import {
+  createTask,
+  deleteTask,
+  readtasks,
+  updateTask,
+} from "../model/PrismaTaskModel.js";
 const router = express.Router();
 // const _dirname = path.resolve();
 
 router.get("/", async (req, res) => {
   //get data from the db
-  const taskList = await readTasks();
+  const taskList = await readtasks();
 
   res.json({
     status: "success",
@@ -25,7 +28,7 @@ router.post("/", async (req, res) => {
   try {
     const result = await createTask(req.body);
 
-    result?._id
+    result?.id
       ? res.json({
           status: "success",
           message: "New task has been added successfully",
@@ -45,11 +48,11 @@ router.post("/", async (req, res) => {
 
 router.patch("/", async (req, res) => {
   try {
-    const { _id, type } = req.body;
+    const { id, type } = req.body;
     // update data in db
-    const result = await switchTask(_id, type);
+    const result = await updateTask(id, type);
 
-    result?._id
+    result?.id
       ? res.json({
           status: "success",
           message: "The task has been switeched successfully",
@@ -70,9 +73,9 @@ router.patch("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   try {
-    const result = await deleteManyTasks(req.body);
-
-    result?.deletedCount > 0
+    const result = await deleteTask(req.body.id);
+    console.log(result);
+    result
       ? res.json({
           status: "success",
           message: "The tasks have been deleted successfully",
@@ -82,8 +85,6 @@ router.delete("/", async (req, res) => {
           message: "Unable to delete the task ",
         });
   } catch (error) {
-    console.log(error);
-
     res.json({
       status: "error",
       message: "Error deleting the task",
